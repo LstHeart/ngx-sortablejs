@@ -3,3 +3,8 @@
   border-radius: 0.25rem;
   min-height: 40px;
 }
+
+.group-selected {
+  background-color: #f9c7c8;
+  border: solid red 1px;
+}

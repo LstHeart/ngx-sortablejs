@@ -25,8 +25,19 @@ export class MultipleListsComponent {
     '10',
   ];
 
+  normal: Options = {
+    // group: 'normal-group',
+    multiDrag: true,
+    selectedClass:'selected',
+    fallbackTolerance: 3,
+    animation: 150
+  };
+
   normalOptions: Options = {
     group: 'normal-group',
+    multiDrag: true,
+    selectedClass:'group-selected',
+    // avoidImplicitDeselect: true,
   };
 
   // clone groups

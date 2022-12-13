@@ -13,7 +13,9 @@ import {
   Renderer2,
   SimpleChange,
 } from '@angular/core';
-import Sortable, {Options} from 'sortablejs';
+// import Sortable, {Options,MultiDrag,Swap} from 'sortablejs';
+import {Options,MultiDrag,Swap} from 'sortablejs';
+import Sortable from 'sortablejs/modular/sortable.complete.esm.js';
 import {GLOBALS} from './globals';
 import {SortablejsBindings} from './sortablejs-bindings';
 import {SortablejsService} from './sortablejs.service';
@@ -65,7 +67,8 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    if (Sortable && Sortable.create) { // Sortable does not exist in angular universal (SSR)
+    if (Sortable && Sortable.create && Sortable.mount) { // Sortable does not exist in angular universal (SSR)
+      // this.mount();
       this.create();
     }
   }
@@ -100,6 +103,10 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
       this.sortablejsInit.emit(this.sortableInstance);
     }, 0);
   }
+
+  // private mount() {
+  //   Sortable.mount(new MultiDrag(), new Swap());
+  // }
 
   private getBindings(): SortablejsBindings {
     if (!this.sortablejs) {
